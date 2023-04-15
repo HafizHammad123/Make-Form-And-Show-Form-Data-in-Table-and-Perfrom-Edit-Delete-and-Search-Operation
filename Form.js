@@ -122,7 +122,7 @@ main_form.addEventListener('submit', (e) => {
 
         // Form Data render using for each loop start here
 
-        Array_of_object.forEach(render_form_data => {
+        Array_of_object.forEach((render_form_data,index) => {
             let tr = document.createElement('tr')
             tr.className = 'table_row'
             tbody.appendChild(tr)
@@ -154,12 +154,19 @@ main_form.addEventListener('submit', (e) => {
 
             delete_btn.addEventListener('click', () => {
                 tr.remove();
+                // console.log(index)
+                console.log(Array_of_object)
+                // Array_of_object.splice(index,1)
+
                 for (let index = 0; index < Array_of_object.length; index++) {
                     if (Array_of_object[index] === render_form_data) {
                         Array_of_object.splice(index, 1)
                     }
 
                 }
+
+                console.log(Array_of_object)
+
                 localStorage.setItem('Form_Data', JSON.stringify(Array_of_object))
 
                 if (tbody.children[0]) {
@@ -331,3 +338,5 @@ let name2='hammad';
 let name1='md';
 
 console.log(name2.indexOf(name1))
+
+
